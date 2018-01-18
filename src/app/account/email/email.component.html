@@ -1,0 +1,59 @@
+<div class="alert alert-danger"
+   *ngIf="(userChangeEmail.get('changeEmailPassword').hasError('required')
+    && userChangeEmail.get('changeEmailPassword').touched)">
+  Please enter your password
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="(userChangeEmail.get('newEmail').hasError('required')
+  && userChangeEmail.get('newEmail').touched)
+  || (userChangeEmail.get('newEmail').hasError('email')
+  && userChangeEmail.get('newEmail').touched)">
+  You must enter a new valid email address
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="emailChangeError != null">
+  {{emailChangeError}}
+</div>
+
+<form class="form-horizontal" [formGroup]="userChangeEmail" (ngSubmit)="onChangeEmail()">
+  <div class="form-group">
+    <label for="changeEmailPassword"
+           class="control-label col-sm-2">
+      Password:
+    </label>
+    <div class="col-sm-10">
+      <input type="password"
+             formControlName="changeEmailPassword"
+             [formGroup]="userChangeEmail"
+             class="form-control"
+             id="changeEmailPassword">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="newEmail"
+           class="control-label col-sm-2">
+      New Email:
+    </label>
+    <div class="col-sm-10">
+      <input type="email"
+             formControlName="newEmail"
+             [formGroup]="userChangeEmail"
+             class="form-control"
+             id="newEmail">
+    </div>
+  </div>
+
+  <div class="col-sm-offset-2 col-sm-10">
+    <button class="btn btn-primary"
+      [disabled]="userChangeEmail.invalid">
+      Change
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onCloseChangeEmailForm()">
+      Cancel
+    </button>
+  </div>
+</form>
+<br>

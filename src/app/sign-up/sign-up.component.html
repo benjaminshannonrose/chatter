@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="alert alert-danger"
+       *ngIf="(signUp.get('username').hasError('required') && signUp.get('username').touched)
+       || (signUp.get('username').hasError('minlength') && signUp.get('username').touched)">
+    Please enter a username at least 6 characters long
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="(signUp.get('email').hasError('required') && signUp.get('email').touched)
+       || (signUp.get('email').hasError('email') && signUp.get('email').touched)">
+    Please enter a valid email address
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="signUp.get('emailConfirm').hasError('matchEmail') && signUp.get('emailConfirm').touched">
+    Email addresses do not match
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="(signUp.get('password').hasError('required') && signUp.get('password').touched)
+       || (signUp.get('password').hasError('minlength') && signUp.get('password').touched)">
+    Please enter a password at least 6 characters in length
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="signUp.get('passwordConfirm').hasError('matchPassword') && signUp.get('passwordConfirm').touched">
+    Passwords do not match
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="signupError != null">
+    {{signupError}}
+  </div>
+  <form class="form-signin" [formGroup]="signUp" (ngSubmit)="onCreateUser()">
+    <h2 class="form-signin-heading">Create your account</h2>
+    <div class="form-group">
+      <input type="text"
+             formControlName="username"
+             name="newUsername"
+             id="newUsername"
+             class="form-control"
+             placeholder="Username..."
+             [formGroup]="signUp">
+    </div>
+    <div class="form-group">
+      <input type="email"
+             formControlName="email"
+             name="newEmail" id="newEmail"
+             class="form-control"
+             placeholder="Email..."
+             [formGroup]="signUp">
+    </div>
+    <div class="form-group">
+      <input type="email"
+             formControlName="emailConfirm"
+             name="confirmEmail"
+             id="confirmEmail"
+             class="form-control"
+             placeholder="Confirm email..."
+             [formGroup]="signUp">
+    </div>
+    <div class="form-group">
+      <input type="password"
+             formControlName="password"
+             name="newPassword"
+             id="newPassword"
+             class="form-control"
+             placeholder="Password..."
+             [formGroup]="signUp">
+    </div>
+    <div class="form-group">
+      <input type="password"
+             formControlName="passwordConfirm"
+             name="confirmPassword"
+             id="confirmPassword"
+             class="form-control"
+             placeholder="Confirm password..."
+             [formGroup]="signUp">
+    </div>
+    <button id="signUpButton"
+            class="btn btn-lg btn-primary btn-block"
+            type="submit"
+            value="Sign Up"
+            [disabled]="signUp.invalid">
+      Sign Up
+    </button>
+  </form>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+
+  <div class="alert alert-danger"
+       *ngIf="(login.get('email').hasError('required') && login.get('email').touched)
+       || (login.get('email').hasError('email') && login.get('email').touched)">
+    Please enter a valid email address
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="(login.get('password').hasError('required') && login.get('password').touched)">
+    Please enter your password
+  </div>
+  <div class="alert alert-danger"
+        *ngIf="errorMessage != null">
+    {{errorMessage}}
+  </div>
+  <form class="form-signin" [formGroup]="login" (ngSubmit)="onLogin()">
+    <h2 class="form-signin-heading">Login</h2>
+    <div class="form-group">
+      <input type="email"
+             formControlName="email"
+             name="loginEmail"
+             id="loginEmail"
+             class="form-control"
+             placeholder="Email..."
+             [formGroup]="login">
+    </div>
+    <div class="form-group">
+      <input type="password"
+             formControlName="password"
+             name="loginPassword"
+             id="loginPassword"
+             class="form-control"
+             placeholder="Password..."
+             [formGroup]="login">
+    </div>
+    <button id="loginButton"
+            class="btn btn-lg btn-primary btn-block"
+            type="submit"
+            value="Sign Up"
+            [disabled]="login.invalid">
+      Log in
+    </button>
+  </form>
+</div>

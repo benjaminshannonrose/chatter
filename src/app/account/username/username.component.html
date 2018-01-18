@@ -1,0 +1,36 @@
+<div class="alert alert-danger"
+     *ngIf="(userChangeUsername.get('newUsername').hasError('required')
+     && userChangeUsername.get('newUsername').touched)
+     || (userChangeUsername.get('newUsername').hasError('minlength')
+     && userChangeUsername.get('newUsername').touched)">
+  Please enter a new username at least 6 characters long
+</div>
+
+<form class="form-horizontal" [formGroup]="userChangeUsername" (ngSubmit)="onChangeUsername()">
+
+  <div class="form-group">
+    <label for="newUsername"
+           class="control-label col-sm-2">
+      New Username:
+    </label>
+    <div class="col-sm-10">
+      <input type="text"
+             formControlName="newUsername"
+             [formGroup]="userChangeUsername"
+             class="form-control"
+             id="newUsername"
+             placeholder="{{currentUsername}}">
+    </div>
+  </div>
+
+  <div class="col-sm-offset-2 col-sm-10">
+    <button class="btn btn-primary"
+            [disabled]="userChangeUsername.invalid">
+      Change
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onCloseChangeUsernameForm()">
+      Cancel
+    </button>
+  </div>
+</form>
+<br>

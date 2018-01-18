@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-9 col-sm-7">
+      <strong>
+        Change Username?
+      </strong>
+    </div>
+    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleChangeUsernameForm(true)">
+      DO IT!
+    </button>
+  </div>
+  <br>
+  <app-username *ngIf="showChangeUsernameForm" (closeChangeUsernameClicked)="onToggleChangeUsernameForm($event)"></app-username>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-9 col-sm-7">
+      <strong>
+        Change Email?
+      </strong>
+    </div>
+    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleChangeEmailForm(true)">
+      DO IT!
+    </button>
+  </div>
+  <br>
+  <app-email *ngIf="showChangeEmailForm" (closeChangeEmailClicked)="onToggleChangeEmailForm($event)"></app-email>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-9 col-sm-7">
+      <strong>
+        Change Password?
+      </strong>
+    </div>
+    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleChangePasswordForm(true)">
+      DO IT!
+    </button>
+  </div>
+  <br>
+  <app-password *ngIf="showChangePasswordForm" (closeChangePasswordClicked)="onToggleChangePasswordForm($event)"></app-password>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-9 col-sm-7">
+      <strong>
+        Delete Account?(CAUTION!):
+      </strong>
+    </div>
+    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleDeleteAccountForm(true)">
+      DO IT!
+    </button>
+  </div>
+  <br>
+  <app-delete-account *ngIf="showDeleteAccountForm" (closeDeleteClicked)="onToggleDeleteAccountForm($event)"></app-delete-account>
+</div>
+

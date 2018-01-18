@@ -1,0 +1,36 @@
+<div class="alert alert-danger"
+  *ngIf="(userDeleteAccount.get('deleteAccountPassword').hasError('required')
+  && userDeleteAccount.get('deleteAccountPassword').touched)">
+  Please enter your password
+</div>
+
+<div class="alert alert-danger"
+  *ngIf="deleteAccountError != null">
+  {{deleteAccountError}}
+</div>
+
+<form class="form-horizontal" [formGroup]="userDeleteAccount" (ngSubmit)="onDeleteAccount()">
+  <div class="form-group">
+    <label for="updateEmailPassword"
+           class="control-label col-sm-2">
+      Password:
+    </label>
+    <div class="col-sm-10">
+      <input type="password"
+             formControlName="deleteAccountPassword"
+             [formGroup]="userDeleteAccount"
+             class="form-control"
+             id="updateEmailPassword">
+    </div>
+  </div>
+
+  <div class="col-sm-offset-2 col-sm-10">
+    <button class="btn btn-danger" [disabled]="userDeleteAccount.invalid">
+      Delete
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onCloseDeleteAccountForm()">
+      Cancel
+    </button>
+  </div>
+</form>
+<br>
