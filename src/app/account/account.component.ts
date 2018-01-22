@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-account',
@@ -13,13 +14,22 @@ export class AccountComponent implements OnInit {
   showChangeEmailForm: boolean;
   showChangePasswordForm: boolean;
   showDeleteAccountForm: boolean;
+  showUpdateMade: boolean;
+  updateSubscription: Subscription;
 
-  constructor() { }
+  constructor( private userService: UserService) {
+    this.updateSubscription = this.userService.doGetUpdateStatus().subscribe(
+      status => {
+        this.showUpdateMade = status;
+      });
+  }
 
   ngOnInit() {
+    this.showChangeUsernameForm = false;
     this.showChangePasswordForm = false;
     this.showDeleteAccountForm = false;
     this.showChangeEmailForm = false;
+    this.showUpdateMade = false;
   }
 
   onToggleChangeUsernameForm(bool: boolean) {
@@ -37,5 +47,6 @@ export class AccountComponent implements OnInit {
   onToggleDeleteAccountForm(bool: boolean) {
     this.showDeleteAccountForm = bool;
   }
+
 
 }

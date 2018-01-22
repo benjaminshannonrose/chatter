@@ -1,4 +1,14 @@
 <div class="container-fluid" *ngIf="isLoggedIn">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <img class="img-responsive" id="chatterIcon" src="../../assets/pictures/chatter_icon.jpg">
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <h3 id="userGreeting">
+        Hi there! Go ahead and say something:
+      </h3>
+    </div>
+  </div>
   <form>
     <div class="form-group">
       <label for="inputTitle">Title:</label>
@@ -12,8 +22,17 @@
   </form>
 </div>
 
-<div class="container-fluid" *ngIf="!isLoggedIn">
-  <h3>Have something good to say? <a routerLink="/login">Log in</a> or <a routerLink="/sign-up">sign up</a>!</h3>
+<div class="container-fluid" *ngIf="!isLoggedIn" id="notLoggedInMessage">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <img class="img-responsive" id="chatterIcon" src="../../assets/pictures/chatter_icon.jpg">
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <h3 id="noUserGreeting">
+        Have something to say? <a routerLink="/login" class="messageBoardLink">Log in</a> or <a routerLink="/sign-up" class="messageBoardLink">sign up</a>!
+      </h3>
+    </div>
+  </div>
 </div>
 
 <hr>

@@ -50,6 +50,7 @@ export class MessageBoardComponent implements OnInit {
     this.postService.doAddPost(this.content, this.title, user.displayName, user.email);
     this.content = '';
     this.title = '';
+
   }
 
   onGetPost(postId) {

@@ -33,13 +33,12 @@ export class DeleteAccountComponent implements OnInit {
       .then( () => {
         this.userService.doDeleteAccount()
           .then( () => {
-            alert('Account deleted!');
             this.router.navigate(['/message-board']);
           }).catch( (error) => {
             this.deleteAccountError = error;
         });
       }).catch( (error) => {
-      this.deleteAccountError = 'Password entered incorrect';
+      this.deleteAccountError = 'Incorrect password';
     });
   }
 }

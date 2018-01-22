@@ -33,13 +33,13 @@ export class EmailComponent implements OnInit {
       .then( () => {
         this.userService.doUpdateUserEmail(newEmail)
           .then( () => {
-            alert('Email changed successfully!');
+            this.userService.doSendUpdateStatus();
             this.onCloseChangeEmailForm();
           }).catch( (error) => {
             this.emailChangeError = 'Email belongs to an existing account';
         });
       }).catch( (error) => {
-        this.emailChangeError = 'Password entered incorrect';
+        this.emailChangeError = 'Incorrect password';
     });
   }
 }

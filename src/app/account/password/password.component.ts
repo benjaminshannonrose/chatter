@@ -33,7 +33,7 @@ export class PasswordComponent implements OnInit {
       .then( () => {
         this.userService.doUpdateUserPassword(newPW)
           .then( () => {
-            alert('Password changed successfully!');
+            this.userService.doSendUpdateStatus();
             this.onClosePasswordForm();
           }).catch( (error) => {
             this.passwordChangeError = error;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -28,10 +29,15 @@ export class LoginComponent implements OnInit {
     const password: string = this.login.get('password').value;
     this.userService.doLogin(email, password)
       .then(() => {
-      this.router.navigate(['/message-board']);
+        this.userService.doSetAuthPersistence()
+          .then( () => {
+            this.router.navigate(['/message-board']);
+          }).catch( (error) => {
+            this.errorMessage = error;
+        });
     }).catch((error) => {
-      console.log(error);
-      this.errorMessage = 'Invalid login credentials';
+        console.log(error);
+        this.errorMessage = 'Invalid login credentials';
     });
   }
 

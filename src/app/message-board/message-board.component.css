@@ -1,3 +1,7 @@
 .post-user-and-delete {
   display: inline-block;
 }
+
+#chatterIcon {
+  max-width: 100px;
+}

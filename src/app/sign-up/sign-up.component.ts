@@ -38,10 +38,15 @@ export class SignUpComponent implements OnInit {
     const username: string = this.signUp.get('username').value;
     const email: string  = this.signUp.get('email').value;
     const password: string  = this.signUp.get('password').value;
-    this.userService.doCreateUser(email, password, username)
+    this.userService.doCreateUser(email, password)
       .then(() => {
         this.userService.doUpdateUserInfo(username);
-        this.router.navigate(['/message-board']);
+        this.userService.doSetAuthPersistence()
+          .then( () => {
+            this.router.navigate(['/message-board']);
+          }).catch( (error) => {
+            this.signupError = error;
+        });
       })
       .catch((error) => {
         this.signupError = 'Email belongs to an existing account';
