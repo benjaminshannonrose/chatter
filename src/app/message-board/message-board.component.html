@@ -11,12 +11,12 @@
   </div>
   <form>
     <div class="form-group">
-      <label for="inputTitle">Title:</label>
-      <input type="text" [(ngModel)]="title" name="inputTitle" id="inputTitle" class="form-control" placeholder="Title...">
+      <label for="newPostTitle">Title:</label>
+      <input type="text" [(ngModel)]="title" name="newPostTitle" id="newPostTitle" class="form-control" placeholder="Title...">
     </div>
     <div class="form-group">
-      <label for="inputContent">Message:</label>
-      <textarea [(ngModel)]="content" name="inputContent" id="inputContent" class="form-control" placeholder="Say something..."></textarea>
+      <label for="newPostContent">Message:</label>
+      <textarea [(ngModel)]="content" name="newPostContent" id="newPostContent" class="form-control" placeholder="Say something..."></textarea>
     </div>
     <button id="postButton" class="btn btn-primary" type="submit" value="Add a Post" (click)="onAddPost()">Post!</button>
   </form>
@@ -38,14 +38,14 @@
 <hr>
 
 <div class="container-fluid" *ngFor="let post of posts | async">
-  <div class="panel panel-default" (click)="onGetPost(post.id)">
+  <div class="panel panel-default postPanel" (click)="onGetPost(post.id)">
     <div class="panel-heading"><h4 class="postedTitle">{{ post.data.title }}</h4></div>
     <div class="panel-body">
-      <em class="postedUsername post-user-and-delete">by: {{ post.data.username }}</em>
+      <em class="postedUsername">by: {{ post.data.username }}</em>
       <p class="postedMessage">{{ post.data.content }}</p>
     </div>
     <div class="panel-footer" *ngIf="userEmail === 'admin@admin.com' || post.data.email === userEmail">
-      <a class="deletePost post-user-and-delete" (click)="onDeletePost(post.id)"><p class="">delete</p></a>
+      <a class="deletePost" (click)="onDeletePost(post.id)">delete</a>
     </div>
   </div>
 </div>

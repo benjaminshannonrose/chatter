@@ -4,7 +4,6 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RoutingModule} from './routing.module';
 import {environment} from '../environments/environment';
@@ -22,6 +21,7 @@ import {PostService} from './services/post.service';
 import {DeleteAccountComponent} from './account/delete-account/delete-account.component';
 import {EmailComponent} from './account/email/email.component';
 import {UsernameComponent} from './account/username/username.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +34,14 @@ import {UsernameComponent} from './account/username/username.component';
     PasswordComponent,
     DeleteAccountComponent,
     EmailComponent,
-    UsernameComponent
+    UsernameComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,

@@ -1,5 +1,9 @@
 <div class="container">
 
+  <h2 class="text-center">Manage Account</h2>
+
+  <hr>
+
   <div class="row" *ngIf="showUpdateMade">
     <div class="alert alert-success">
       Successfully updated
@@ -12,7 +16,7 @@
         Change Username?
       </strong>
     </div>
-    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleChangeUsernameForm(true)">
+    <button class="btn btn-primary col-xs-3 col-sm-2" id="usernameFormOpen" (click)="onToggleChangeUsernameForm(true)">
       DO IT!
     </button>
   </div>
@@ -27,7 +31,7 @@
         Change Email?
       </strong>
     </div>
-    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleChangeEmailForm(true)">
+    <button class="btn btn-primary col-xs-3 col-sm-2" id="emailFormOpen" (click)="onToggleChangeEmailForm(true)">
       DO IT!
     </button>
   </div>
@@ -42,7 +46,7 @@
         Change Password?
       </strong>
     </div>
-    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleChangePasswordForm(true)">
+    <button class="btn btn-primary col-xs-3 col-sm-2" id="passwordFormOpen" (click)="onToggleChangePasswordForm(true)">
       DO IT!
     </button>
   </div>
@@ -57,7 +61,7 @@
         Delete Account?(CAUTION!):
       </strong>
     </div>
-    <button class="btn btn-primary col-xs-3 col-sm-2" (click)="onToggleDeleteAccountForm(true)">
+    <button class="btn btn-primary col-xs-3 col-sm-2" id="deleteFormOpen" (click)="onToggleDeleteAccountForm(true)">
       DO IT!
     </button>
   </div>

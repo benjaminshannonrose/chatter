@@ -9,7 +9,6 @@ import {AngularFirestore} from 'angularfire2/firestore';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  private isCollapsed: boolean;
   private isLoggedIn: boolean;
   private userDisplayName: string;
   private userEmail: string;
@@ -17,7 +16,6 @@ export class NavigationComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.isCollapsed = true;
     const authObject = this;
     this.userService.afAuth.auth.onAuthStateChanged(function(user) {
       if (user == null) {
@@ -33,7 +31,6 @@ export class NavigationComponent implements OnInit {
   }
 
   onLogOut() {
-    this.isCollapsed = true;
     this.userService.doLogOut();
   }
 }
