@@ -6,11 +6,6 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'noneofyourbusiness',
-    authDomain: 'chatter-f31bf.firebaseapp.com',
-    databaseURL: 'https://chatter-f31bf.firebaseio.com',
-    projectId: 'chatter-f31bf',
-    storageBucket: 'chatter-f31bf.appspot.com',
-    messagingSenderId: '852950357213'
+
   }
 };
